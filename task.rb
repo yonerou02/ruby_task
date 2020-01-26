@@ -5,6 +5,8 @@ def q1
   names = ["田中", "佐藤", "佐々木", "高橋"]
 
   # 以下に回答を記載
+  names << "斎藤"
+  puts names[4]
 
 end
 
@@ -13,6 +15,10 @@ def q2
   array2 = %w(bird bat tiger)
 
   # 以下に回答を記載
+  array = array1 + array2
+  array.each do |array_element|
+    p array_element
+  end
 
 end
 
@@ -20,14 +26,15 @@ def q3
   numbers = [1, 5, 8, 10, 2, 3, 2, 3, 3, 1, 4, 5, 9]
 
   # 以下に回答を記載
-
+  p numbers.count(3)
 end
 
 def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
-
+  sports.delete(nil)
+  p sports
 end
 
 def q5
@@ -35,6 +42,17 @@ def q5
   array2 = [1, 5, 8, 10]
 
   # 以下に回答を記載
+  if array1.length == 0
+    puts "->true"
+  elsif
+    puts "->false"
+  end
+
+  if array2.length == 0
+    puts "->ture"
+  elsif
+    puts "->false"
+  end
 
 end
 
@@ -57,7 +75,7 @@ def q8
 
   # 以下に回答を記載
 
-  
+
   p programming_languages
   p upper_case_programming_languages
 end
