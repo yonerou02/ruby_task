@@ -31,7 +31,7 @@ def q4
   sports = ["サッカー", "フットサル", nil, "野球", "バスケ", nil, "バレー"]
 
   # 以下に回答を記載
-  sports.delete(nil)
+  sports.compact!
   p sports
 
 end
@@ -73,7 +73,7 @@ def q7
   array = ["1", "2", "3", "4", "5"]
 
   # 以下に回答を記載
-  p array = array.map(&:to_i)
+  p array.map!(&:to_i)
 
 end
 
@@ -81,8 +81,8 @@ def q8
   programming_languages = %w(ruby php python javascript)
 
   # 以下に回答を記載
-  programming_languages = programming_languages&.map(&:capitalize)
-  upper_case_programming_languages = programming_languages.map(&:upcase)
+  programming_languages&.map!(&:capitalize)
+  upper_case_programming_languages = programming_languages.map!(&:upcase)
 
   p programming_languages
   p upper_case_programming_languages
@@ -115,7 +115,10 @@ def q11
   sports = ["サッカー", "バスケ", "野球", ["フットサル", "野球"], "水泳", "ハンドボール", ["卓球", "サッカー", "ボルダリング"]]
 
   # 以下に回答を記載
-
+  puts "ユーザの趣味一覧"
+  sports.flatten.uniq.each.with_index(1) do |sports, i|
+      puts "No.#{i} #{sports}"
+  end
 
 end
 
@@ -123,7 +126,7 @@ def q12
   data = { user: { name: "satou", age: 33 } }
 
   # 以下に回答を記載
-
+  puts data [:user] [:name]
 end
 
 def q13
@@ -131,6 +134,8 @@ def q13
   update_data = { age: 32, address: "沖縄" }
 
   # 以下に回答を記載
+  user_data.merge!(update_data)
+  puts user_data
 
 end
 
@@ -138,7 +143,8 @@ def q14
   data = { name: "satou", age: 33, address: "saitama", hobby: "soccer", email: "hoge@fuga.com" }
 
   # 以下に回答を記載
-
+  data_key = data.keys
+  puts data_key
 end
 
 def q15
@@ -146,6 +152,17 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
+  if data1.has_key?(:age)
+    p "->OK"
+  else
+    p "->NG"
+  end
+
+  if data2.has_key?(:age)
+    p "->OK"
+  else
+    p "->NG"
+  end
 
 end
 
