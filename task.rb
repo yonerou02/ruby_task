@@ -82,7 +82,7 @@ def q8
 
   # 以下に回答を記載
   programming_languages&.map!(&:capitalize)
-  upper_case_programming_languages = programming_languages.map!(&:upcase)
+  upper_case_programming_languages = programming_languages.map(&:upcase)
 
   p programming_languages
   p upper_case_programming_languages
@@ -152,17 +152,20 @@ def q15
   data2 = { name: "yamada", hobby: "baseball", role: "normal" }
 
   # 以下に回答を記載
-  if data1.has_key?(:age)
-    p "->OK"
-  else
-    p "->NG"
-  end
+  # if data1.has_key?(:age)
+  #   p "->OK"
+  # else
+  #   p "->NG"
+  # end
+  p data1.has_key?(:age) ? "->OK" : "->NG"
 
-  if data2.has_key?(:age)
-    p "->OK"
-  else
-    p "->NG"
-  end
+  # if data2.has_key?(:age)
+  #   p "->OK"
+  # else
+  #   p "->NG"
+  # end
+  p data2.has_key?(:age) ? "->OK" : "->NG"
+
 
 end
 
@@ -175,12 +178,35 @@ def q16
   ]
 
   # 以下に回答を記載
+  users.each do |users|
+    puts "私の名前は#{users[:name]}です。年齢は#{users[:age]}です。"
+  end
 
 end
 
 class UserQ17
   # 以下に回答を記載
+  # def info
+  #   puts "名前：#{[:name]}"
+  #   puts "年齢：#{[:age]}"
+  #   puts "性別：#{[:gender]}"
+  #   puts [:admin] ? "管理者権限：有り" : "管理者権限:無し"
+  # end
+  def initialize(user)
+    @name = user[:name]
+    @age = user[:age]
+    @gender = user[:gender]
+    @admin = user[:admin]
+  end
 
+  def info
+    puts <<~TEXT
+    "名前　： #{@name}"
+    "年齢　： #{@age}"
+    "性別　： #{@gender}"
+    "管理者権限 ： #{@admin ? "有り" : "無し"}"
+    TEXT
+  end
 end
 
 def q17
@@ -195,7 +221,18 @@ end
 
 class UserQ18
   # 以下に回答を記載
+  def initialize(user)
+    @name = user[:name]
+    @age = user[:age]
+  end
 
+  def introduce
+    if @age == 32
+      puts "こんにちは、#{@name}と申します。宜しくお願いいたします。"
+    elsif
+      puts "はいさいまいど〜、#{@name}です！！！"
+    end
+  end
 end
 
 def q18
@@ -209,10 +246,10 @@ end
 
 class Item
   # 以下を修正して下さい
-
   def initialize(name)
     @name = name
   end
+  attr_accessor :name
 end
 
 def q19
@@ -223,13 +260,41 @@ end
 
 class UserQ20
   # 以下に回答を記載
-
+  def initialize(user)
+    @name = user[:name]
+    @age = user[:age]
+  end
+  attr_accessor :name
+  attr_accessor :age
 end
 
 class Zoo
   # 以下に回答を記載
+  def initialize(zoo)
+    @name = zoo[:name]
+    # @entry_fee = entry_fee
+    @infant = zoo[:entry_fee][:infant]
+    @children = zoo[:entry_fee][:children]
+    @adult = zoo[:entry_fee][:adult]
+    @senior = zoo[:entry_fee][:senior]
+  end
 
+  def info_entry_fee(user)
+    fee =
+    case user.age
+      when 0..5
+      @infant
+    when 6..12
+      @children
+    when 13..64
+      @adult
+    when 65..120
+      @senior
+    end
+      puts "#{user.name}さんの入場料は#{fee}円です"
+  end
 end
+
 
 
 def q20
