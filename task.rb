@@ -81,7 +81,7 @@ def q8
   programming_languages = %w(ruby php python javascript)
 
   # 以下に回答を記載
-  programming_languages&.map!(&:capitalize)
+  programming_languages.map!(&:capitalize)
   upper_case_programming_languages = programming_languages.map(&:upcase)
 
   p programming_languages
@@ -179,7 +179,7 @@ def q16
 
   # 以下に回答を記載
   users.each do |users|
-    puts "私の名前は#{users[:name]}です。年齢は#{users[:age]}です。"
+    puts "私の名前は#{users[:name]}です。年齢は#{users[:age]}歳です。"
   end
 
 end
@@ -192,7 +192,7 @@ class UserQ17
   #   puts "性別：#{[:gender]}"
   #   puts [:admin] ? "管理者権限：有り" : "管理者権限:無し"
   # end
-  def initialize(user)
+  def initialize(**user)
     @name = user[:name]
     @age = user[:age]
     @gender = user[:gender]
@@ -200,11 +200,13 @@ class UserQ17
   end
 
   def info
+    @admin = @admin ? "有り" : "無し"
+
     puts <<~TEXT
     "名前　： #{@name}"
     "年齢　： #{@age}"
     "性別　： #{@gender}"
-    "管理者権限 ： #{@admin ? "有り" : "無し"}"
+    "管理者権限 ： #{@admin}"
     TEXT
   end
 end
@@ -227,7 +229,7 @@ class UserQ18
   end
 
   def introduce
-    if @age == 32
+    if @age >= 32
       puts "こんにちは、#{@name}と申します。宜しくお願いいたします。"
     elsif
       puts "はいさいまいど〜、#{@name}です！！！"
@@ -246,10 +248,11 @@ end
 
 class Item
   # 以下を修正して下さい
-  def initialize(name)
+  attr_reader :name
+
+  def initialize(name:)
     @name = name
   end
-  attr_accessor :name
 end
 
 def q19
@@ -260,17 +263,17 @@ end
 
 class UserQ20
   # 以下に回答を記載
-  def initialize(user)
+  attr_reader :name, :age
+
+  def initialize(**user)
     @name = user[:name]
     @age = user[:age]
   end
-  attr_accessor :name
-  attr_accessor :age
 end
 
 class Zoo
   # 以下に回答を記載
-  def initialize(zoo)
+  def initialize(**zoo)
     @name = zoo[:name]
     # @entry_fee = entry_fee
     @infant = zoo[:entry_fee][:infant]
