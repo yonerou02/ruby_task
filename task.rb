@@ -200,7 +200,7 @@ class UserQ17
   end
 
   def info
-    @admin = @admin ? "有り" : "無し"
+    admin = @admin ? "有り" : "無し"
 
     puts <<~TEXT
     "名前　： #{@name}"
@@ -229,7 +229,7 @@ class UserQ18
   end
 
   def introduce
-    if @age >= 32
+    if @age >= 16
       puts "こんにちは、#{@name}と申します。宜しくお願いいたします。"
     elsif
       puts "はいさいまいど〜、#{@name}です！！！"
