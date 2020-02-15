@@ -200,7 +200,7 @@ class UserQ17
   end
 
   def info
-    admin = @admin ? "有り" : "無し"
+    @admin = @admin ? "有り" : "無し"
 
     puts <<~TEXT
     "名前　： #{@name}"
