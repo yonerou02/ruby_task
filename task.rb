@@ -200,13 +200,13 @@ class UserQ17
   end
 
   def info
-    @admin = @admin ? "有り" : "無し"
-
+    admin = @admin ? "有り" : "無し"
     puts <<~TEXT
-    "名前　： #{@name}"
-    "年齢　： #{@age}"
-    "性別　： #{@gender}"
-    "管理者権限 ： #{@admin}"
+    "名前 ： #{@name}"
+    "年齢 ： #{@age}"
+    "性別 ： #{@gender}"
+    "管理者権限 ： #{admin}"
+
     TEXT
   end
 end
